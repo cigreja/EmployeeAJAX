@@ -5,13 +5,20 @@ import com.cigreja.employeewebsite.entities.Address;
 import com.cigreja.employeewebsite.entities.Employee;
 import com.cigreja.employeewebsite.data.repositories.AddressDAO;
 import com.cigreja.employeewebsite.data.repositories.EmployeeDAO;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -30,11 +37,17 @@ public class AddController {
     AddressDAO addressDAO;
 
     @RequestMapping(method = POST)
-    public ModelAndView add(HttpServletRequest request){
-        
-        HashMap<String,Object> model = new HashMap<>();
-        String view = "home";
-            
+    public void add(HttpServletRequest request, HttpServletResponse response) {
+
+        // Response Writer
+        response.setContentType("text/plain");
+        PrintWriter writer = null;
+        try {
+            writer = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // get posted information
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -52,6 +65,9 @@ public class AddController {
             employeeDAO.merge(employee);
             address.getEmployees().add(employee);
             addressDAO.merge(address);
+
+            // added employee successfully
+            writer.print("added employee successfully");
         }
         else{
             List<Address> addresses = addressDAO.getAddresses(employee);
@@ -65,13 +81,15 @@ public class AddController {
 
                 address.getEmployees().add(employee);
                 addressDAO.merge(address);
+
+                // added address successfully
+                writer.print("added address successfully");
             }
             else{
                 // display error employee address already exists
-                model.put("addErrMsg", "Employee address already exists");
+                //model.put("addErrMsg", "Employee address already exists");
+                writer.print("Employee address already exists");
             }
         }
-
-        return new ModelAndView(view,model);
     }
 }

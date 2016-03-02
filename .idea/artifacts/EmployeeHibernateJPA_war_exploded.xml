@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="EmployeeHibernateJPA:war exploded">
-    <output-path>$PROJECT_DIR$/target/EmployeeHibernateJPA-3.5-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/target/EmployeeAJAX-3.5-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -37,7 +37,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/EmployeeHibernateJPA-3.5-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/EmployeeAJAX-3.5-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="EmployeeHibernateJPA/web/Web" />
     </root>

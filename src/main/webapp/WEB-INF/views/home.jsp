@@ -21,6 +21,40 @@
 
         <title>JPA</title>
 
+        <!-- AJAX SCRIPT -->
+        <script type="text/javascript">
+            function addFormReady(){
+                var firstName = $('#firstName').val();
+                var lastName = $('#lastName').val();
+                var address = $('#address').val();
+                if(firstName === "" || lastName === "" || address === ""){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+            $(document).ready(function(){
+                $('#addBtn').click(function(){
+                    if(addFormReady()){
+                        var firstName = $('#firstName').val();
+                        var lastName = $('#lastName').val();
+                        var address = $('#address').val();
+                        $.ajax({
+                            type:'POST',
+                            data: {firstName: firstName,
+                                   lastName: lastName,
+                                   address: address},
+                            url:'Add',
+                            success: function(result){
+                                $('#addMsg').html(result);
+                            }
+                        })
+                    }
+                })
+            });
+        </script>
+
     </head>
     <body  ng-controller="ctrl1">
 
@@ -47,12 +81,12 @@
 
         <!-- ADD EMPLOYEE -->
         <div style="text-align: center;">
-            <p><span style="color: red;">${addErrMsg}</span></p>
+            <p><span id="addMsg" style="color: red;"></span></p>
             <div class="divContainer">
                 <div class="divHeader">
                     Add Employee
                     <div class="divBody" >
-                        <form action="Add" method="POST">
+                        <form>
                             <div style="text-align: center;">
                                 <table>
 
@@ -62,7 +96,7 @@
                                             <label class="divBodyLabel">First Name:</label>
                                         </td>
                                         <td>
-                                            <input class="divBodyInput" name="firstName" type="text" required>
+                                            <input id="firstName" class="divBodyInput" name="firstName" type="text" required>
                                         </td>
                                     </tr>
 
@@ -72,7 +106,7 @@
                                             <label class="divBodyLabel">Last Name:</label>
                                         </td>
                                         <td>
-                                            <input class="divBodyInput" name="lastName"  type="text" required>
+                                            <input id="lastName" class="divBodyInput" name="lastName"  type="text" required>
                                         </td>
                                     </tr>
 
@@ -82,7 +116,7 @@
                                             <label class="divBodyLabel">Address:</label>
                                         </td>
                                         <td>
-                                            <input class="divBodyInput" name="address"  type="text" required>
+                                            <input id="address" class="divBodyInput" name="address"  type="text" required>
                                         </td>
                                     </tr>
 
@@ -99,7 +133,8 @@
                                     -->
                                 </table>
                             </div>
-                            <input type="submit" value="Submit">
+                            <input type="reset" value="Clear">
+                            <input id="addBtn" type="submit" value="Submit">
                         </form>
                     </div>
                 </div>
