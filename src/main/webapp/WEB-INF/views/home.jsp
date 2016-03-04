@@ -15,11 +15,6 @@
 
     <title>BOOTSTRAP</title>
 
-    <!-- BOOTSTRAP CSS CDN -->
-    <!--
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    -->
-
     <!-- BOOTSTRAP CSS LINK -->
     <c:url var="bootstrapcss" value="/resources/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="${bootstrapcss}"/>
@@ -27,49 +22,6 @@
     <!-- MAIN CSS LINK -->
     <c:url var="maincss" value="/resources/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="${maincss}"/>
-
-    <!-- JQUERY IMPORT CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-    </script>
-
-    <!-- AJAX SCRIPT -->
-    <script type="text/javascript">
-
-        function addFormReady() {
-            var firstName = $('#firstName').val();
-            var lastName = $('#lastName').val();
-            var address = $('#address').val();
-            if (firstName === "" || lastName === "" || address === "") {
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-
-        $(document).ready(function () {
-            $('#addBtn').click(function () {
-                if (addFormReady()) {
-                    var firstName = $('#firstName').val();
-                    var lastName = $('#lastName').val();
-                    var address = $('#address').val();
-                    $.ajax({
-                        type: 'POST',
-                        data: {
-                            firstName: firstName,
-                            lastName: lastName,
-                            address: address
-                        },
-                        url: 'Add',
-                        success: function (result) {
-                            $('#addMsg').html(result);
-                        }
-                    })
-                }
-            })
-        });
-
-    </script>
 
 </head>
 <body ng-controller="ctrl1">
@@ -219,10 +171,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
 </script>
 
+<!-- AJAX SCRIPT -->
+<c:url var="ajaxjs" value="/resources/js/ajax.js"/>
+<script src="${ajaxjs}"></script>
+
 <!-- ANGULAR JS IMPORT -->
 <script
         src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js">
 </script>
+
+<!-- ANGULAR JS SCRIPT -->
 <c:url var="angularjs" value="/resources/js/angular.js"/>
 <script src="${angularjs}"></script>
 
