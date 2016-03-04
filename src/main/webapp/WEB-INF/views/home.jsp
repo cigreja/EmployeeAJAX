@@ -48,7 +48,7 @@
 </div>
 
 <!-- ADD EMPLOYEE -->
-<div style="text-align: center;">
+<div id="addEmployeeDiv" style="text-align: center;">
     <p><span id="addMsg" style="color: red;"></span></p>
     <div class="divContainer">
         <div class="divHeader">
@@ -112,7 +112,7 @@
 <!-- GET EMPLOYEE -->
 <center>
     <p><span style="color: red;">${getErrMsg}</span></p>
-    <div class="divContainer">
+    <div id="getEmployeeDiv" class="divContainer">
         <div class="divHeader">
             Get Employee Addresses
             <div class="divBody">
@@ -151,7 +151,7 @@
 <!-- EMPLOYEE ADDRESSES -->
 <c:if test=" ${addresses eq null} ">
     <center>
-        <div class="divContainer">
+        <div id="displayAddressesDiv" class="divContainer">
             <div class="divHeader">
                 Employee Addresses
                 <div class="divBody">
