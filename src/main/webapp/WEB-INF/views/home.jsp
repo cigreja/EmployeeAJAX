@@ -4,203 +4,227 @@
     Author     : Carlos Igreja
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html ng-app="app1" >
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html ng-app="app1">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
 
-        <!-- CSS -->
-        <c:url var="maincss" value="/resources/css/main.css" />
-        <link rel="stylesheet" type="text/css" href="${maincss}" />
+    <title>BOOTSTRAP</title>
 
-        <!-- JQUERY IMPORT CDN -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-        </script>
+    <!-- BOOTSTRAP CSS CDN -->
+    <!--
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    -->
 
-        <title>JPA</title>
+    <!-- BOOTSTRAP CSS LINK -->
+    <c:url var="bootstrapcss" value="/resources/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="${bootstrapcss}"/>
 
-        <!-- AJAX SCRIPT -->
-        <script type="text/javascript">
-            function addFormReady(){
-                var firstName = $('#firstName').val();
-                var lastName = $('#lastName').val();
-                var address = $('#address').val();
-                if(firstName === "" || lastName === "" || address === ""){
-                    return false;
-                }
-                else{
-                    return true;
-                }
+    <!-- MAIN CSS LINK -->
+    <c:url var="maincss" value="/resources/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="${maincss}"/>
+
+    <!-- JQUERY IMPORT CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+
+    <!-- AJAX SCRIPT -->
+    <script type="text/javascript">
+
+        function addFormReady() {
+            var firstName = $('#firstName').val();
+            var lastName = $('#lastName').val();
+            var address = $('#address').val();
+            if (firstName === "" || lastName === "" || address === "") {
+                return false;
             }
-            $(document).ready(function(){
-                $('#addBtn').click(function(){
-                    if(addFormReady()){
-                        var firstName = $('#firstName').val();
-                        var lastName = $('#lastName').val();
-                        var address = $('#address').val();
-                        $.ajax({
-                            type:'POST',
-                            data: {firstName: firstName,
-                                   lastName: lastName,
-                                   address: address},
-                            url:'Add',
-                            success: function(result){
-                                $('#addMsg').html(result);
-                            }
-                        })
-                    }
-                })
-            });
-        </script>
+            else {
+                return true;
+            }
+        }
 
-    </head>
-    <body  ng-controller="ctrl1">
+        $(document).ready(function () {
+            $('#addBtn').click(function () {
+                if (addFormReady()) {
+                    var firstName = $('#firstName').val();
+                    var lastName = $('#lastName').val();
+                    var address = $('#address').val();
+                    $.ajax({
+                        type: 'POST',
+                        data: {
+                            firstName: firstName,
+                            lastName: lastName,
+                            address: address
+                        },
+                        url: 'Add',
+                        success: function (result) {
+                            $('#addMsg').html(result);
+                        }
+                    })
+                }
+            })
+        });
 
-        <!-- HEADER -->
-        <div id="header">
-            Employee Website
-        </div>
+    </script>
 
-        <!-- NAVIGATION -->
-        <div id="navigation">
-            <ul>
-                <li>
-                    <a class="{{addNavSelection}}" 
-                       ng-click="addEmployeeNavSelection()" 
-                       href="">Add Employee</a>
-                </li>
-                <li>
-                    <a class="{{getNavSelection}}" 
-                       ng-click="getEmployeeNavSelection()" 
-                       href="">Get Employee</a>
-                </li>
-            </ul>
-        </div>
+</head>
+<body ng-controller="ctrl1">
 
-        <!-- ADD EMPLOYEE -->
-        <div style="text-align: center;">
-            <p><span id="addMsg" style="color: red;"></span></p>
-            <div class="divContainer">
-                <div class="divHeader">
-                    Add Employee
-                    <div class="divBody" >
-                        <form>
-                            <div style="text-align: center;">
-                                <table>
+<!-- HEADER -->
+<div id="header">
+    Employee Website
+</div>
 
-                                    <!-- First Name -->
-                                    <tr>
-                                        <td>
-                                            <label class="divBodyLabel">First Name:</label>
-                                        </td>
-                                        <td>
-                                            <input id="firstName" class="divBodyInput" name="firstName" type="text" required>
-                                        </td>
-                                    </tr>
+<!-- NAVIGATION -->
+<div id="navigation">
+    <ul>
+        <li>
+            <a class="{{addNavSelection}}"
+               ng-click="addEmployeeNavSelection()"
+               href="">Add Employee</a>
+        </li>
+        <li>
+            <a class="{{getNavSelection}}"
+               ng-click="getEmployeeNavSelection()"
+               href="">Get Employee</a>
+        </li>
+    </ul>
+</div>
 
-                                    <!-- Last Name -->
-                                    <tr>
-                                        <td>
-                                            <label class="divBodyLabel">Last Name:</label>
-                                        </td>
-                                        <td>
-                                            <input id="lastName" class="divBodyInput" name="lastName"  type="text" required>
-                                        </td>
-                                    </tr>
+<!-- ADD EMPLOYEE -->
+<div style="text-align: center;">
+    <p><span id="addMsg" style="color: red;"></span></p>
+    <div class="divContainer">
+        <div class="divHeader">
+            Add Employee
+            <div class="divBody">
+                <form>
+                    <div style="text-align: center;">
+                        <table>
 
-                                    <!-- ADDRESS -->
-                                    <tr>
-                                        <td>
-                                            <label class="divBodyLabel">Address:</label>
-                                        </td>
-                                        <td>
-                                            <input id="address" class="divBodyInput" name="address"  type="text" required>
-                                        </td>
-                                    </tr>
+                            <!-- First Name -->
+                            <tr>
+                                <td>
+                                    <label class="divBodyLabel">First Name:</label>
+                                </td>
+                                <td>
+                                    <input id="firstName" class="divBodyInput" name="firstName" type="text" required>
+                                </td>
+                            </tr>
 
-                                    <!-- Salary -->
-                                    <!--
-                                    <tr>
-                                        <td>
-                                            <label class="divBodyLabel">Salary:</label>
-                                        </td>
-                                        <td>
-                                            <input class="divBodyInput" name="salary" type="number" required>
-                                        </td>
-                                    </tr> 
-                                    -->
-                                </table>
-                            </div>
-                            <input type="reset" value="Clear">
-                            <input id="addBtn" type="submit" value="Submit">
-                        </form>
+                            <!-- Last Name -->
+                            <tr>
+                                <td>
+                                    <label class="divBodyLabel">Last Name:</label>
+                                </td>
+                                <td>
+                                    <input id="lastName" class="divBodyInput" name="lastName" type="text" required>
+                                </td>
+                            </tr>
+
+                            <!-- ADDRESS -->
+                            <tr>
+                                <td>
+                                    <label class="divBodyLabel">Address:</label>
+                                </td>
+                                <td>
+                                    <input id="address" class="divBodyInput" name="address" type="text" required>
+                                </td>
+                            </tr>
+
+                            <!-- Salary -->
+                            <!--
+                            <tr>
+                                <td>
+                                    <label class="divBodyLabel">Salary:</label>
+                                </td>
+                                <td>
+                                    <input class="divBodyInput" name="salary" type="number" required>
+                                </td>
+                            </tr>
+                            -->
+                        </table>
                     </div>
-                </div>
+                    <input type="reset" value="Clear">
+                    <input id="addBtn" type="submit" value="Submit">
+                </form>
             </div>
         </div>
+    </div>
+</div>
 
-    <!-- GET EMPLOYEE --> 
+<!-- GET EMPLOYEE -->
+<center>
+    <p><span style="color: red;">${getErrMsg}</span></p>
+    <div class="divContainer">
+        <div class="divHeader">
+            Get Employee Addresses
+            <div class="divBody">
+                <form action="Get" method="POST">
+                    <center>
+                        <table>
+
+                            <!-- First Name -->
+                            <tr>
+                                <td>
+                                    <label class="divBodyLabel">First Name:</label>
+                                </td>
+                                <td>
+                                    <input class="divBodyInput" name="firstName" type="text" required>
+                                </td>
+                            </tr>
+
+                            <!-- Last Name -->
+                            <tr>
+                                <td>
+                                    <label class="divBodyLabel">Last Name:</label>
+                                </td>
+                                <td>
+                                    <input class="divBodyInput" name="lastName" type="text" required>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="submit" value="Submit"/>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</center>
+
+<!-- EMPLOYEE ADDRESSES -->
+<c:if test=" ${addresses eq null} ">
     <center>
-        <p><span style="color: red;">${getErrMsg}</span></p>
         <div class="divContainer">
             <div class="divHeader">
-                Get Employee Addresses
-                <div class="divBody" >
-                    <form action="Get" method="POST">
-                        <center>
-                            <table>
-
-                                <!-- First Name -->
-                                <tr>
-                                    <td>
-                                        <label class="divBodyLabel">First Name:</label>
-                                    </td>
-                                    <td>
-                                        <input class="divBodyInput" name="firstName" type="text" required>
-                                    </td>
-                                </tr>
-
-                                <!-- Last Name -->
-                                <tr>
-                                    <td>
-                                        <label class="divBodyLabel">Last Name:</label>
-                                    </td>
-                                    <td>
-                                        <input class="divBodyInput" name="lastName"  type="text" required>
-                                    </td>
-                                </tr>
-                            </table>
-                            <input type="submit" value="Submit" />
-                        </center>
-                    </form>
+                Employee Addresses
+                <div class="divBody">
+                    <c:forEach var="address" items="${addresses}">
+                        <p><c:out value="${address.address}"/></p>
+                    </c:forEach>
                 </div>
             </div>
         </div>
     </center>
+</c:if>
 
-    <!-- EMPLOYEE ADDRESSES --> 
-    <c:if test=" ${addresses eq null} ">
-        <center>
-            <div class="divContainer">
-                <div class="divHeader">
-                    Employee Addresses
-                    <div class="divBody" >
-                        <c:forEach var="address" items="${addresses}">
-                            <p><c:out value="${address.address}" /></p>
-                        </c:forEach>
-                    </div>
-                </div>
-            </div>
-        </center>
-    </c:if>
-    
-    <!-- ANGULAR JS IMPORT -->
-    <script 
-    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js">
-    </script>
-    <c:url var="angularjs" value="/resources/js/angular.js" />
-    <script src="${angularjs}"></script>
+<!-- BOOTSTRAP JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- JQUERY IMPORT CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+</script>
+
+<!-- ANGULAR JS IMPORT -->
+<script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js">
+</script>
+<c:url var="angularjs" value="/resources/js/angular.js"/>
+<script src="${angularjs}"></script>
+
 </body>
 </html>

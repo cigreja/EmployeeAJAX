@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EmployeeHibernateJPA.iml" filepath="$PROJECT_DIR$/EmployeeHibernateJPA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EmployeeHibernateAJAX.iml" filepath="$PROJECT_DIR$/EmployeeHibernateAJAX.iml" />
     </modules>
   </component>
 </project>
