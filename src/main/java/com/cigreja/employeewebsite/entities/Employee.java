@@ -25,7 +25,7 @@ public class Employee {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name = "Map")
     @Column(name = "ADDRESS", table = "Map")
     private List<Address> addresses = new ArrayList<>();

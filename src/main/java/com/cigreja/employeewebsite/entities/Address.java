@@ -21,7 +21,7 @@ public class Address {
     
     private String address;
 
-    @ManyToMany(mappedBy = "addresses", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "addresses")
     @Column(name = "EMPLOYEE", table = "Map")
     private List<Employee> employees = new ArrayList<>();
 
