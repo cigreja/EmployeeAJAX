@@ -15,32 +15,40 @@ function addFormReady() {
 }
 
 $(document).ready(function () {
-    
+
     $('#addBtn').click(function () {
         if (addFormReady()) {
-            var firstName = $('#addFirstName').val();
-            var lastName = $('#addLastName').val();
-            var address = $('#address').val();
-            $.ajax({
-                type: 'POST',
-                data: {
-                    firstName: firstName,
-                    lastName: lastName,
-                    address: address
-                },
-                url: 'Add',
-                success: function (result) {
-                    $('#addMsg').html(result);
-                }
-            })
+            //var firstName = $('#addFirstName').val();
+            //var lastName = $('#addLastName').val();
+            //var address = $('#address').val();
+            //$.ajax({
+            //    type: 'POST',
+            //    data: {
+            //        firstName: firstName,
+            //        lastName: lastName,
+            //        address: address
+            //    },
+            //    url: 'Add',
+            //    success: function (result) {
+            //        $('#addMsg').html(result);
+            //    }
+            //})
+
+            var details = $('#addEmployeeForm').serialize();
+
+            $.post('Add', details)
+                .done(function(data){
+                    $('#addMsg').html(data);
+                })
+                .fail(function(){
+                    alert("There was an error!");
+                });
         }
     })
-    
+
     $('#getBtn').click(function(){
         if(addFormReady()){
-            // information to post with ajax
-            var firstName = $('#getFirstName').val();
-            var lastName = $('#getLastName').val();
+
             var details = $('#getEmployeeForm').serialize();
 
             $.post('Get', details)
@@ -50,16 +58,6 @@ $(document).ready(function () {
                 .fail(function(){
                     alert("There was an error!");
                 });
-
-            //$.ajax({
-            //    type: 'POST',
-            //    url: 'Get',
-            //    success: function (data) {
-            //        alert("id = " + data.addressID + " address = " + data.address);
-            //    }
-            //});
-            //var addressID;
-            //var address;
         }
     })
 });

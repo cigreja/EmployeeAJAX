@@ -54,7 +54,7 @@
         <div class="divHeader">
             Add Employee
             <div class="divBody">
-                <form>
+                <form id="addEmployeeForm">
                     <div style="text-align: center;">
                         <table>
 

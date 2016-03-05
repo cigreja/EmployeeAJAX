@@ -42,12 +42,26 @@ public class AddressDAO {
         return addresses;
     }
 
-    public boolean containsAddress(List<Address> addresses, Address address) {
+    public Address containsAddress(List<Address> addresses, Address address) {
+        for(Address a : addresses){
+            if(address.getAddress().equals(a.getAddress())){
+                return a;
+            }
+        }
+        return em.merge(address);
+    }
+
+    public boolean addressExists(List<Address> addresses, Address address) {
         for(Address a : addresses){
             if(address.getAddress().equals(a.getAddress())){
                 return true;
             }
         }
         return false;
+    }
+
+    public List<Address> getAddresses() {
+        Query query = em.createQuery("from Address");
+        return query.getResultList();
     }
 }

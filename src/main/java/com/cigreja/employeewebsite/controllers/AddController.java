@@ -37,59 +37,33 @@ public class AddController {
     AddressDAO addressDAO;
 
     @RequestMapping(method = POST)
-    public void add(HttpServletRequest request, HttpServletResponse response) {
+    public void add(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // Response Writer
         response.setContentType("text/plain");
-        PrintWriter writer = null;
-        try {
-            writer = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        PrintWriter writer = response.getWriter();
 
-        // get posted information
+        // Employee
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        Address address = new Address(request.getParameter("address"));
-        
-        // check if user is already in the database
         Employee employee = employeeDAO.getEmployee(firstName,lastName);
         if(employee == null){
-
-            // create new employee
             employee = new Employee(firstName, lastName);
-            employeeDAO.persist(employee);
-            addressDAO.persist(address);
+        }
+
+        // Address
+        Address address = new Address(request.getParameter("address"));
+        List<Address> allAddresses = addressDAO.getAddresses();
+        address = addressDAO.containsAddress(allAddresses,address);
+
+        // add employee address
+        List<Address> employeeAddresses = addressDAO.getAddresses(employee);
+        if(!addressDAO.addressExists(employeeAddresses,address)){
             employee.getAddresses().add(address);
             employeeDAO.merge(employee);
-            address.getEmployees().add(employee);
-            addressDAO.merge(address);
-
-            // added employee successfully
-            writer.print("added employee successfully");
         }
         else{
-            List<Address> addresses = addressDAO.getAddresses(employee);
-            if(!addressDAO.containsAddress(addresses,address)){
-
-                employee = employeeDAO.merge(employee);
-                addressDAO.persist(address);
-
-                employee.getAddresses().add(address);
-                employeeDAO.merge(employee);
-
-                address.getEmployees().add(employee);
-                addressDAO.merge(address);
-
-                // added address successfully
-                writer.print("added address successfully");
-            }
-            else{
-                // display error employee address already exists
-                //model.put("addErrMsg", "Employee address already exists");
-                writer.print("Employee address already exists");
-            }
+            writer.print("Employee address already exists");
         }
     }
 }
