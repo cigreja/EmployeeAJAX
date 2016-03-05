@@ -116,7 +116,7 @@
         <div class="divHeader">
             Get Employee Addresses
             <div class="divBody">
-                <form>
+                <form id="getEmployeeForm">
                     <center>
                         <table>
 

@@ -59,17 +59,31 @@ public class GetController {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
 
+        System.out.println("this is parameters");
+        System.out.println(firstName);
+        System.out.println(lastName);
+
         // check if user is in the database
         Employee employee = employeeDAO.getEmployee(firstName,lastName);
+
+        System.out.println("this is employee");
+        System.out.println(employee.getFirstName());
+        System.out.println(employee.getLastName());
+
         if(employee != null){
+
+            //employeeDAO.persist(employee);
+            addressDAO.getAddresses(employee);
             // get employee addresses
-            List<Address> addresses = employee.getAddresses();
+            List<Address> addresses = addressDAO.getAddresses(employee);
             model.put("addresses", addresses);
             for(Address a: addresses){
                 try {
                     jsonObject.put("id", a.getAddressID());
                     jsonObject.put("address", a.getAddress());
+                    System.out.println(jsonObject);
                     out.print(jsonObject);
+                    System.out.println(jsonObject);
                 } catch (JSONException ex) {
                     Logger.getLogger(GetController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -77,7 +91,8 @@ public class GetController {
         }
         else{
             // display error employee doesn't exist
-            model.put("getErrMsg", "Employee doesn't exist");
+            //model.put("getErrMsg", "Employee doesn't exist");
+            out.print("Employee doesn't exist");
         }
         
         //return new ModelAndView(view,model);

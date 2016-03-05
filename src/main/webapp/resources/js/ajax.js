@@ -36,21 +36,30 @@ $(document).ready(function () {
         }
     })
     
-    //$('#getBtn').click(function(){
-    //    if(addFormReady()){
-    //        // information to post with ajax
-    //        var firstName = $('#getFirstName').val();
-    //        var lastName = $('#getLastName').val();
-    //
-    //        $.ajax({
-    //            type: 'POST',
-    //            url: 'Get',
-    //            success: function (data) {
-    //                alert(data);
-    //            }
-    //        });
-    //        var addressID;
-    //        var address;
-    //    }
-    //})
+    $('#getBtn').click(function(){
+        if(addFormReady()){
+            // information to post with ajax
+            var firstName = $('#getFirstName').val();
+            var lastName = $('#getLastName').val();
+            var details = $('#getEmployeeForm').serialize();
+
+            $.post('Get', details)
+                .done(function(data){
+                    alert("data = " + data);
+                })
+                .fail(function(){
+                    alert("There was an error!");
+                });
+
+            //$.ajax({
+            //    type: 'POST',
+            //    url: 'Get',
+            //    success: function (data) {
+            //        alert("id = " + data.addressID + " address = " + data.address);
+            //    }
+            //});
+            //var addressID;
+            //var address;
+        }
+    })
 });
