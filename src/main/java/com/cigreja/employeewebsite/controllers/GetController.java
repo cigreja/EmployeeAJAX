@@ -5,9 +5,19 @@ import com.cigreja.employeewebsite.entities.Address;
 import com.cigreja.employeewebsite.entities.Employee;
 import com.cigreja.employeewebsite.data.repositories.AddressDAO;
 import com.cigreja.employeewebsite.data.repositories.EmployeeDAO;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.json.JSONException;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +40,20 @@ public class GetController {
     AddressDAO addressDAO;
 
     @RequestMapping(method = POST)
-    public ModelAndView get(HttpServletRequest request){
+    public void get(HttpServletRequest request, HttpServletResponse response){
 
         HashMap<String,Object> model = new HashMap<>();
         String view = "home";
+        PrintWriter out = null;
+
+        // json object for test
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            out = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // get posted information
         String firstName = request.getParameter("firstName");
@@ -45,12 +65,21 @@ public class GetController {
             // get employee addresses
             List<Address> addresses = employee.getAddresses();
             model.put("addresses", addresses);
+            for(Address a: addresses){
+                try {
+                    jsonObject.put("id", a.getAddressID());
+                    jsonObject.put("address", a.getAddress());
+                    out.print(jsonObject);
+                } catch (JSONException ex) {
+                    Logger.getLogger(GetController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         else{
             // display error employee doesn't exist
             model.put("getErrMsg", "Employee doesn't exist");
         }
         
-        return new ModelAndView(view,model);
+        //return new ModelAndView(view,model);
     }
 }

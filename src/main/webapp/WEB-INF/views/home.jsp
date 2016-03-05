@@ -64,7 +64,7 @@
                                     <label class="divBodyLabel">First Name:</label>
                                 </td>
                                 <td>
-                                    <input id="firstName" class="divBodyInput" name="firstName" type="text" required>
+                                    <input id="addFirstName" class="divBodyInput" name="firstName" type="text" required>
                                 </td>
                             </tr>
 
@@ -74,7 +74,7 @@
                                     <label class="divBodyLabel">Last Name:</label>
                                 </td>
                                 <td>
-                                    <input id="lastName" class="divBodyInput" name="lastName" type="text" required>
+                                    <input id="addLastName" class="divBodyInput" name="lastName" type="text" required>
                                 </td>
                             </tr>
 
@@ -116,7 +116,7 @@
         <div class="divHeader">
             Get Employee Addresses
             <div class="divBody">
-                <form action="Get" method="POST">
+                <form>
                     <center>
                         <table>
 
@@ -126,7 +126,7 @@
                                     <label class="divBodyLabel">First Name:</label>
                                 </td>
                                 <td>
-                                    <input class="divBodyInput" name="firstName" type="text" required>
+                                    <input id="getFirstName" class="divBodyInput" name="firstName" type="text" required>
                                 </td>
                             </tr>
 
@@ -136,11 +136,11 @@
                                     <label class="divBodyLabel">Last Name:</label>
                                 </td>
                                 <td>
-                                    <input class="divBodyInput" name="lastName" type="text" required>
+                                    <input id="getLastName" class="divBodyInput" name="lastName" type="text" required>
                                 </td>
                             </tr>
                         </table>
-                        <input type="submit" value="Submit"/>
+                        <input id="getBtn" type="submit" value="Submit"/>
                     </center>
                 </form>
             </div>
@@ -163,6 +163,56 @@
         </div>
     </center>
 </c:if>
+
+<!-- ADDRESSES TEST -->
+<center>
+    <div id="displayAddressesDivTest" class="divContainer">
+        <div class="divHeader">
+            Employee Addresses
+            <div class="divBody">
+                <p>create the json method and come back</p>
+            </div>
+        </div>
+    </div>
+</center>
+
+<!-- NEW BOOTSTRAP DIV FOR DISPLAYING EMPLOYEES -->
+<div class="container">
+    <div class="page-header">
+        <h1>Get Employee</h1>
+    </div>
+
+    <table class="table table-inverse">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <!-- BOOTSTRAP JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

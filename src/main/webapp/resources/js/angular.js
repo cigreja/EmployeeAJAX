@@ -1,9 +1,15 @@
 var app1 = angular.module('app1',[]);
 
-app1.controller("ctrl1", function($scope){
+app1.controller("ctrl1", function($scope,$http){
     $scope.navSelection = "addEmployee";
     $scope.addNavSelection = "selected";
     $scope.getNavSelection = "";
+
+    // ajax to get addresses
+    var url = "Get"; // the GetController
+    $http.get(url).success( function(response) {
+        $scope.addresses = response;
+    });
 
     /**
      * initially start on add employee page
