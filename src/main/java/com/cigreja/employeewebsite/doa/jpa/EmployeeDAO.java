@@ -1,5 +1,5 @@
 
-package com.cigreja.employeewebsite.data.repositories;
+package com.cigreja.employeewebsite.doa.jpa;
 
 import com.cigreja.employeewebsite.entities.Address;
 import com.cigreja.employeewebsite.entities.Employee;
@@ -40,7 +40,7 @@ public class EmployeeDAO {
         query.setParameter("lastName", lastName);
         List employees = query.getResultList();
         if (employees.isEmpty()) {
-            return null;
+            return em.merge(new Employee(firstName,lastName));
         } else {
             return (Employee) employees.get(0);
         }
@@ -50,5 +50,11 @@ public class EmployeeDAO {
 
         List<Address> addresses = new ArrayList<>();
         return addresses;
+    }
+
+    public boolean addAddress(Employee employee, Address address){
+        employee.getAddresses().add(address);
+        address.getEmployees().add(employee);
+        return true;
     }
 }

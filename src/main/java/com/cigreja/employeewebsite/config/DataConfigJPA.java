@@ -25,7 +25,7 @@ import java.util.Properties;
  * @since Feb 21, 2016
  */
 @Configuration
-public class DataConfig {
+public class DataConfigJPA {
 
     @Bean(name = "datasource")
     public DataSource datasource() {

@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Import;
  * @since  Feb 21, 2016
  */
 @Configuration
-@Import(DataConfig.class)
-@ComponentScan("com.cigreja.employeewebsite.data.repositories")
+@Import(DataConfigJPA.class)
+@ComponentScan("com.cigreja.employeewebsite.doa.jpa")
 public class RootConfig {
 
 }

@@ -1,6 +1,8 @@
 
 package com.cigreja.employeewebsite.entities;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -25,7 +27,7 @@ public class Employee {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "Map")
     @Column(name = "ADDRESS", table = "Map")
     private List<Address> addresses = new ArrayList<>();

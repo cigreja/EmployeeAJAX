@@ -3,16 +3,12 @@ package com.cigreja.employeewebsite.controllers;
 
 import com.cigreja.employeewebsite.entities.Address;
 import com.cigreja.employeewebsite.entities.Employee;
-import com.cigreja.employeewebsite.data.repositories.AddressDAO;
-import com.cigreja.employeewebsite.data.repositories.EmployeeDAO;
+import com.cigreja.employeewebsite.doa.jpa.AddressDAO;
+import com.cigreja.employeewebsite.doa.jpa.EmployeeDAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
-import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * GetController
