@@ -4,13 +4,6 @@
     <list default="true" id="17d0c3a9-0040-41e8-ab6e-87198b5c48ff" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/RootConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/RootConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/controllers/AddController.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/controllers/AddController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/controllers/GetController.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/controllers/GetController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/entities/Address.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/entities/Address.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/entities/Employee.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/entities/Employee.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/DataConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/DataConfigJPA.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/data/repositories/AddressDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/doa/jpa/AddressDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/data/repositories/EmployeeDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/doa/jpa/EmployeeDAO.java" />
     </list>
     <ignored path="EmployeeHibernateJPA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -120,8 +113,8 @@
       <file leaf-file-name="RootConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/RootConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51282054">
-              <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.5982906">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -185,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/data/repositories/AddressDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/data/repositories/EmployeeDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/DataConfigJPA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/RootConfig.java" />
       </list>
     </option>
   </component>
@@ -1274,7 +1268,7 @@
       <workItem from="1457032337363" duration="16908000" />
       <workItem from="1457176700224" duration="3100000" />
       <workItem from="1457185613294" duration="20279000" />
-      <workItem from="1457269817679" duration="17003000" />
+      <workItem from="1457269817679" duration="17268000" />
     </task>
     <task id="LOCAL-00001" summary="intial commit">
       <created>1456760197971</created>
@@ -1354,11 +1348,17 @@
       <option name="project" value="LOCAL" />
       <updated>1457208089774</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="refactored jpa repositories into separate package">
+      <created>1457292369182</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1457292369182</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112823000" />
+    <option name="totallyTimeSpent" value="113088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1931" y="-11" width="1942" height="1046" extended-state="6" />
@@ -1417,7 +1417,8 @@
     <MESSAGE value="got json data test working" />
     <MESSAGE value="fixed duplicate entries in database mapping" />
     <MESSAGE value="refactored addController" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored addController" />
+    <MESSAGE value="refactored jpa repositories into separate package" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored jpa repositories into separate package" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1859,8 +1860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cigreja/employeewebsite/config/RootConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51282054">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.5982906">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
