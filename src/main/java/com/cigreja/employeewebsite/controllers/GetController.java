@@ -3,8 +3,8 @@ package com.cigreja.employeewebsite.controllers;
 
 import com.cigreja.employeewebsite.entities.Address;
 import com.cigreja.employeewebsite.entities.Employee;
-import com.cigreja.employeewebsite.doa.jpa.AddressDAO;
-import com.cigreja.employeewebsite.doa.jpa.EmployeeDAO;
+import com.cigreja.employeewebsite.doa.AddressDAO;
+import com.cigreja.employeewebsite.doa.EmployeeDAO;
 
 import java.io.IOException;
 import java.io.PrintWriter;

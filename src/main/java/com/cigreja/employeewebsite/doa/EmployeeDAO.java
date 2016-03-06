@@ -1,5 +1,5 @@
 
-package com.cigreja.employeewebsite.doa.jpa;
+package com.cigreja.employeewebsite.doa;
 
 import com.cigreja.employeewebsite.entities.Address;
 import com.cigreja.employeewebsite.entities.Employee;
