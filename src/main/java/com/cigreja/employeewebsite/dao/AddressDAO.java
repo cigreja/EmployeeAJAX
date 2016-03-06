@@ -1,4 +1,4 @@
-package com.cigreja.employeewebsite.doa;
+package com.cigreja.employeewebsite.dao;
 
 import com.cigreja.employeewebsite.entities.Address;
 import com.cigreja.employeewebsite.entities.Employee;
